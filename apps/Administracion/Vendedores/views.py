@@ -1,26 +1,30 @@
-from rest_framework.views import APIView
+from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
 from .models import Vendedor
 from .serializers import VendedorSerializer
 
-class VendedorApiView(APIView):
-    def get(self, request):
-        Serializer = VendedorSerializer(Vendedor.objects.all(), many=True)
-        return Response(status=status.HTTP_200_OK, data=Serializer.data)
-        #return Response({'Vendedor': Vendedor.objects.all()})
+class VendedorViewSet(viewsets.ModelViewSet):
+    queryset = Vendedor.objects.all()
+    serializer_class = VendedorSerializer
 
-    def post(self, request):
-        serializer = VendedorSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response(status=status.HTTP_201_CREATED, data=serializer.data)
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
     
-    #obcion2
-    #def post(self, request):
-       # Vendedor.objects.create(Nombre=request.data['Nombre'], Apellido=request.data['Apellido'],
-       # Cedula=request.data['Cedula'], Telefono=request.data['Telefono'],
-       # FechaNaciminiento=request.data['FechaNaciminiento'], Correo=request.data['Correo'],
-   # RFC=request.data['RFC'])
-     # return Response(status=status.HTTP_201_CREATED, data={"message": "Vendedor creado exitosamente"})
-
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+    
+    def retrieve(self, request, *args, **kwargs):
+        return super().retrieve(request, *args, **kwargs)
+    
+    def update(self, request, *args, **kwargs):
+        return super().update(request, *args, **kwargs)
+    
+    def partial_update(self, request, *args, **kwargs):
+        return super().partial_update(request, *args, **kwargs)
+    
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
+    
+    def partial_update(self, request, *args, **kwargs):
+        return super().partial_update(request, *args, **kwargs)

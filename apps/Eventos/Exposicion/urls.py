@@ -3,6 +3,6 @@ from .views import ExposicionViewSet
 
 router = DefaultRouter()
 
-router.register('', ExposicionViewSet, basename='exposicion')
+router.register(r'exposicion', ExposicionViewSet, basename='exposicion')
 
 urlpatterns = router.urls

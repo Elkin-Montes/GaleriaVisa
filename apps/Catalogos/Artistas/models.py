@@ -9,11 +9,11 @@ class Artista(models.Model):
     Correo = models.CharField(max_length=100)
     Referencia = models.CharField( max_length=200)
     Activo = models.BigIntegerField( default= True)
-        
 
-
-
-
-def __str__(self):
-    return f"{self.Nombre} {self.Apellido}"
+    class Meta:
+        verbose_name = "Artista"
+        verbose_name_plural = "Artistas"
+    
+    def __str__(self):
+        return f"{self.Nombre} {self.Apellido}"
 

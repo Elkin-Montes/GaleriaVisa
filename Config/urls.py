@@ -47,4 +47,6 @@ urlpatterns = [
     path('administracion/', include('apps.Administracion.urls')),
 
     path('eventos/', include('apps.Eventos.urls')),
+
+    path('catalogos/', include('apps.Catalogos.urls')),
 ]

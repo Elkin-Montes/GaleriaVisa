@@ -1,9 +1,7 @@
-from django.urls import path
-from .views import VendedorApiView
+from rest_framework.routers import DefaultRouter
+from .views import VendedorViewSet
 
-app_name = 'Vendedores'
 
-urlpatterns = [
-    path('', VendedorApiView.as_view(), name='vendedor'),
-]
-
+router = DefaultRouter()
+router.register(r'vendedores', VendedorViewSet, basename='vendedores')
+urlpatterns = router.urls
