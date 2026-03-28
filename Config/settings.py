@@ -18,7 +18,8 @@ from apps.Facturacion.config_apps import FACTURACION_CONFIG_APPS
 from apps.Administracion.config_apps import ADMINISTRACION_CONFIG_APPS
 from apps.Eventos.config_apps import EVENTOS_CONFIG_APPS
 from apps.Catalogos.config_apps import CATALOGOS_CONFIG_APPS
-from apps.Inventario.config_apps import INVENTARIO_CONFIG_APPS  
+from apps.Inventario.config_apps import INVENTARIO_CONFIG_APPS 
+from apps.Gastos.config_apps import GASTOS_CONFIG_APPS 
 #Falta importar los reportes
 
 # Quick-start development settings - unsuitable for production
@@ -50,7 +51,7 @@ INSTALLED_APPS = [
     
     'apps.Seguridad.Usuarios',
 
-    ]+ EVENTOS_CONFIG_APPS + ADMINISTRACION_CONFIG_APPS + INVENTARIO_CONFIG_APPS + FACTURACION_CONFIG_APPS+ CATALOGOS_CONFIG_APPS
+    ]+ EVENTOS_CONFIG_APPS + ADMINISTRACION_CONFIG_APPS + INVENTARIO_CONFIG_APPS + FACTURACION_CONFIG_APPS+ CATALOGOS_CONFIG_APPS+ GASTOS_CONFIG_APPS
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -156,11 +157,14 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
-}
+}### si vienes por que no puedes logearte debes poner el codigo de la linea 156 y 157 en cada view que quieras proteger con jwt, 
+#si quieres proteger toda la app debes ponerlo en el settings.py como esta ahora, si quieres proteger solo algunas vistas debes
+#ponerlo en cada vista
 
 # Configuración de Simple JWT
 from datetime import timedelta
 from django.conf import settings
+
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
