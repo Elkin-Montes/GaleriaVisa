@@ -5,3 +5,6 @@ class GastoInternoSerializer(ModelSerializer):
     class Meta:
         model = GastoInterno
         fields = ['Descripcion', 'Tipo_Gasto', 'Monto', 'Fecha', 'FechaCreacion', 'Responsable', 'Activo']
+
+    
+    

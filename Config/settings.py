@@ -97,7 +97,7 @@ WSGI_APPLICATION = 'Config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'mssql',  # Utilizamos el backend mssql-django
-        'NAME': 'GaleriaVisaVer02',  # Nombre de la base de datos
+        'NAME': 'GaleriaVisaVer03',  # Nombre de la base de datos
         'HOST': '(localdb)\ElkinMGserver',  # IP del servidor SQL Server
         'OPTIONS': {
             'driver': 'ODBC Driver 17 for SQL Server',  # Driver ODBC instalado

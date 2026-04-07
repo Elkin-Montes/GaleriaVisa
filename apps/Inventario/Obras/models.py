@@ -4,6 +4,7 @@ from apps.Catalogos.EstiloObra.models import EstilosDeObra
 from apps.Catalogos.MedioObra.models import MediosDeObra
 from apps.Catalogos.TipoObra.models import TiposDeObra
 from apps.Catalogos.Propietario.models import Propietario
+#from apps.Facturacion.Salidas.models import Factura, DetalleFactura
 
 class Obras(models.Model):
     Titulo = models.CharField(max_length=150)
@@ -23,3 +24,19 @@ class Obras(models.Model):
 
     def __str__(self):
         return f"{self.Titulo} ({self.Fue_vendida})"
+    
+
+#estos campos permitien la conexion de obras con factura, para que obras tenga precio de venta
+#  y estado de vendida, sin necesidad de agregar campos a la tabla obras,
+#  y sin necesidad de hacer consultas adicionales a la tabla factura para saber si una obra esta vendida o no.
+# por ahora permanece desabilitada.
+#7/4/26
+
+    #@property
+    #def esta_vendida(self):
+    #   return self.DetalleFactura_set.exists()
+    
+    # @property
+    #def precio_venta(self):
+    #    detalle = self.DetalleFactura_set.first()
+    #    return detalle.Precio if detalle else None

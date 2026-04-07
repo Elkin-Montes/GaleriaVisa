@@ -20,7 +20,7 @@ class Factura(models.Model):
 
 
 class DetalleFactura(models.Model):
-    IdFactura = models.ForeignKey(Factura, on_delete=models.PROTECT)
+    IdFactura = models.ForeignKey(Factura, on_delete=models.PROTECT, related_name='detallefactura_set')
     IdObra = models.ForeignKey(Obras, on_delete=models.PROTECT)
     Precio = models.DecimalField(max_digits=12, decimal_places=2)
     Activo = models.BooleanField( default=True)    
@@ -30,4 +30,9 @@ class DetalleFactura(models.Model):
         verbose_name_plural = "DetallesFacturas"
 
 
-
+#esta pieza permite a conexion de obras con factura, para que obras tenga precio de venta
+#  y estado de vendida, sin necesidad de agregar campos a la tabla obras,
+#  y sin necesidad de hacer consultas adicionales a la tabla factura para saber si una obra esta vendida o no, o cual es su precio de venta.
+#por ahora permanece desabilitada.
+    #def __str__(self):
+    #    return f"{self.IdFactura} - {self.IdObra} (${self.Precio})"
