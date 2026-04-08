@@ -8,6 +8,8 @@ from apps.Catalogos.Propietario.models import Propietario
 
 class Obras(models.Model):
     Titulo = models.CharField(max_length=150)
+    Descripcion = models.TextField(null = True, blank = True)
+    Estado = models.CharField(choices=[('disponible', 'Disponible'),('exhibicion', 'En exhibición'), ('vendida', 'Vendida')], max_length=20, default='disponible')
     IdArtista = models.ForeignKey(Artista,on_delete=models.PROTECT)
     IdEstilo = models.ForeignKey(EstilosDeObra,on_delete=models.PROTECT)
     IdMedio = models.ForeignKey(MediosDeObra, on_delete=models.PROTECT)
@@ -23,7 +25,7 @@ class Obras(models.Model):
         verbose_name_plural = "Obras"
 
     def __str__(self):
-        return f"{self.Titulo} ({self.Fue_vendida})"
+        return f"{self.Titulo} ({self.FueVendida})"
     
 
 #estos campos permitien la conexion de obras con factura, para que obras tenga precio de venta

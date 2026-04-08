@@ -3,7 +3,7 @@ from django.db import models
 class Clientes(models.Model):
     Nombre = models.CharField( max_length=100)
     Apellido = models.CharField( max_length=100)
-    Cedula = models.CharField( max_length=39)
+    Cedula = models.CharField( max_length=39, unique=True)
     Correo = models.CharField( max_length=100)
     Telefono = models.CharField( max_length=20)
     Activo = models.BigIntegerField( default= True)
